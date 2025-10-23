@@ -83,7 +83,7 @@
 
 - Elevation in kubectl, extra power to see stuff
   ```sh
-  # sample => kubectl elevate gustavo.silva1@jumpcloud.com -c readonly/stg01-use2-core-00 -n si -m 'split sdk needs to monitore some of the secrets to check for a bug'
+  # sample => kubectl elevate gustavo.silva1@jumpcloud.com -c readonly/stg01-use2-core-00 -n si -m 'split sdk needs to monitor some of the secrets to check for a bug'
 
   kubectl elevate <EMAIL> -c <CONTEXT> -n <NAMESPACE> -m '<REASON>'
   ```
