@@ -35,6 +35,12 @@
   echo $SHELL
   ```
 
+- Hash a string using `sha256`
+
+  ```sh
+  printf <email.address@to.hash> | sha256sum | cut -d " " -f1 | xxd -r -p | base64
+  ```
+
 ### DevSpace
 - Deploy local changes into kubernetes pod
 
@@ -45,6 +51,7 @@
   ```
 
 ### Kubectl
+
 - Get Secrets in a cluster
 
   ```sh
@@ -97,6 +104,13 @@
   ```sh
   # sample: kubectl get configmap webui-env-config -o yaml
   kubectl get configmap <CONFIGMAP_YOU_WANT> -o yaml
+  ```
+
+- Access to debug pod in k8s
+
+  ```sh
+  # sample: kubectl exec -it kickstart-89897b77d-nq44j -- /bin/bash
+  kubectl exec -it <POD-name> -- /bin/bash
   ```
 
 ### Stern
@@ -161,7 +175,9 @@
 
   aws-elevate <EMAIL> -p secrets-management -s <ROLE> -a <ACCOUNT_NUMBER> -d <TIME> -m "<REASON>"
   ```
+
 ### Docker commands
+
 - Copy the node_modules folder for old versions of node
 
   ```sh
@@ -170,4 +186,41 @@
   CONTAINER_ID=$(docker create <IMAGE_NAME:IMAGE_TAG>) && \
   docker cp $CONTAINER_ID:/opt/jumpcloud/si/node_modules . && \
   docker rm $CONTAINER_ID
+  ```
+
+- Deep clean up docker
+
+  ```sh
+  docker system prune -af --volumes
+  ```
+
+- Access to a docker container to debug
+
+  ```sh
+  docker exec -it <CONTAINER_NAME> bash
+  ```
+
+### NVM
+
+- Add lts version
+
+  ```sh
+  echo "lts/*" > .nvmrc
+  ```
+
+
+### Git
+
+- Git history cleanup
+
+  ```sh
+  git fetch --prune
+  ```
+
+### Homebrew
+
+- Homebrew updates
+
+  ```sh
+  brew update && brew upgrade && brew cleanup
   ```
